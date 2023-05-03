@@ -1,0 +1,532 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    caret-color: transparent;
+}
+
+:root {
+    --font: 'League Script', cursive;
+    --text-font: 'Raleway', sans-serif;
+    --background: rgb(160, 160, 160);
+    --shadow: rgba(0, 0, 0, 50%);
+    --kaart-background: rgb(250, 238, 223);
+    --maan: rgb(253, 70, 70);
+
+
+    /* section maat */
+    --section-width: 20em;
+    --section-height: 37em;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background);
+}
+
+body main {
+    width: 100%;
+    height: 100%;
+}
+
+body main section {
+    width: var(--section-width);
+    height: var(--section-height);
+    position: fixed;
+    top: calc(50% - (var(--section-height) / 2));
+    left: calc(50% - (var(--section-width)/2));
+    border-radius: 1em;
+    background-color: var(--kaart-background);
+    box-shadow: .5em .5em 2em var(--shadow);
+    overflow: hidden;
+    transform-origin: left left;
+}
+
+body main section:first-of-type {
+    z-index: 2;
+
+}
+
+body main > span {
+    display: none;
+    width: 100%;
+    height: 100%;
+
+    /* background-color: red; */
+}
+
+body main > span.naarkaart {
+    display: block;
+}
+
+.naarkaart {
+    animation: nextkaart 2s 1 linear both;
+    animation-direction: normal;
+}
+
+.naarcover {
+    animation: naarcover 2s 1 linear both;
+    animation-direction: reverse;
+}
+
+@keyframes nextkaart {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(22em) rotate(5deg);
+    }
+
+    70% {
+        z-index: 0;
+    }
+
+    100% {
+        transform: translateX(0) rotate(5deg);
+        z-index: 0;
+    }
+}
+
+@keyframes naarcover {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(22em) rotate(5deg);
+    }
+
+    70% {
+        z-index: 0;
+    }
+
+    100% {
+        transform: translateX(0) rotate(5deg);
+        z-index: 0;
+    }
+}
+
+
+body main section::after {
+    content: "";
+    display: block;
+    background-color: rgb(255, 255, 255);
+    width: calc(var(--section-width) + 20em);
+    height: 3em;
+    position: absolute;
+    left: -25em;
+    top: -10em;
+    filter: blur(2em);
+
+    animation: licht 6s both infinite linear;
+}
+
+@keyframes licht {
+    0% {
+        transform: rotate(-30deg) translateY(0);
+    }
+
+    100% {
+        transform: rotate(-30deg) translateY(60em);
+    }
+}
+
+body main section:first-of-type button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+body main section:first-of-type button h1 {
+    width: 100%;
+    height: 1.2em;
+    position: absolute;
+    bottom: 1.5em;
+
+    font-family: var(--font);
+    font-size: 1.7em;
+    font-weight: bold;
+    text-align: center;
+    z-index: 100;
+    transition: .5s;
+    color: black;
+    /* background-color: red; */
+}
+
+body main section:first-of-type h1:hover {
+    transform: scale(1.05);
+}
+
+body main section:first-of-type h1:active {
+    transform: scale(.9);
+}
+
+body main section:first-of-type p {
+    width: 100%;
+    position: absolute;
+    bottom: 1.2em;
+
+    text-align: center;
+    font-weight: lighter;
+}
+
+
+/* the moon */
+body main section:first-of-type>span {
+    display: block;
+    background-color: var(--maan);
+
+    --width: 15em;
+    width: var(--width);
+    height: var(--width);
+    border-radius: var(--width);
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+    z-index: 0;
+}
+
+/* L-sakura tree */
+body main section:first-of-type>img {
+    width: 19em;
+
+    position: absolute;
+    right: -1em;
+    top: 3em;
+
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
+/* Cherry Blossom Falling */
+
+/* bron: https://codepen.io/nicecue/pen/gOpppqE */
+#blossom_container {
+    position: absolute;
+    top: -15em;
+    right: 0;
+    width: 200%;
+    height: 150%;
+}
+
+.petal {
+    background: url(http://talktofill.surge.sh/cherry-blossom.png) no-repeat;
+}
+
+.petal.petal-style1 {
+    width: 45px;
+    height: 20px;
+    background-position: -31px 0;
+    /* background-color: rgba(255, 166, 0, 0.267); */
+}
+
+.petal.petal-style2 {
+    width: 42px;
+    height: 22px;
+    background-position: 0 -23px;
+}
+
+.petal.petal-style3 {
+    width: 37px;
+    height: 24px;
+    background-position: 0 -50px;
+}
+
+.petal.petal-style4 {
+    width: 26px;
+    height: 34px;
+    background-position: -49px -35px;
+}
+
+
+
+body main section:first-of-type div:last-of-type {
+    width: 10.5em;
+    height: 18em;
+    position: relative;
+    top: 14em;
+    left: calc(50% - (45%/2));
+}
+
+body main section:first-of-type > div:last-of-type::after {
+    content: '';
+    display: block;
+    width: 6em;
+    height: 1em;
+    background: radial-gradient(var(--shadow) 0% 2%, transparent 60%);
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    position: absolute;
+    bottom: 1em;
+    left: calc(50% - 3em);
+    z-index: 0;
+
+    animation: shadow 2.5s linear infinite both;
+}
+
+@keyframes shadow {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+body main section:first-of-type div:last-of-type img {
+    position: absolute;
+}
+
+/* lamp hand*/
+body main section:first-of-type div:last-of-type img:nth-of-type(1) {
+    --width: 1.5em;
+    width: var(--width);
+    left: calc(5% - var(--width)/2);
+    top: 9.5em;
+}
+
+/* R-hand */
+body main section:first-of-type div:last-of-type img:nth-of-type(2) {
+    --width: 3.5em;
+    width: var(--width);
+    left: calc(20% - var(--width)/2);
+    top: 7.6em;
+}
+
+/* body main */
+body main section:first-of-type div:last-of-type img:nth-of-type(3) {
+    --width: 6em;
+    width: var(--width);
+    left: calc(50% - var(--width)/2);
+    top: 7.2em;
+
+    animation: bewegen 3s linear infinite;
+}
+
+/* face */
+body main section:first-of-type div:last-of-type img:nth-of-type(4) {
+    --width: 8em;
+    width: var(--width);
+    left: calc(50% - var(--width)/2);
+
+    animation: bewegen 3s linear infinite;
+    animation-delay: -2.5s;
+}
+
+/* L-hand */
+body main section:first-of-type div:last-of-type img:nth-of-type(5) {
+    --width: 3.5em;
+    width: var(--width);
+    right: calc(30% - var(--width)/2);
+    top: 7em;
+
+    animation: bewegen 3s linear infinite;
+    animation-delay: -.7s;
+}
+
+/* lamp */
+body main section:first-of-type div:last-of-type img:nth-of-type(6) {
+    --width: 5em;
+    width: var(--width);
+    left: calc(4% - var(--width)/2);
+    top: 9.5em;
+
+    animation: trilling 2s linear infinite;
+    /* animation-delay: -2s; */
+    transform-origin: top center;
+
+}
+
+/* foots */
+body main section:first-of-type div:last-of-type span {
+    display: block;
+    background-color: brown;
+    width: 1em;
+    height: .9em;
+    border-radius: .1em;
+    position: absolute;
+    z-index: 0;
+
+    animation: bewegen 3s linear infinite;
+}
+
+/* R-foot */
+body main section:first-of-type div:last-of-type span:first-of-type {
+    top: 15.5em;
+    left: 38%;
+}
+
+/* L-foot */
+body main section:first-of-type div:last-of-type span:nth-of-type(2) {
+    top: 15.4em;
+    left: 53%;
+
+    animation-delay: -1.5s;
+}
+
+@keyframes bewegen {
+    0% {
+        transform: translateY(.2em);
+    }
+
+    50% {
+        transform: translateY(-.2em);
+    }
+
+    100% {
+        transform: translateY(.2em);
+    }
+}
+
+@keyframes trilling {
+    0% {
+        transform: rotate(15deg) translateX(0);
+    }
+
+    50% {
+        transform: rotate(-15deg) translateX(-.3em) translateY(-.15em);
+    }
+
+    100% {
+        transform: rotate(15deg) translateX(0);
+    }
+}
+
+/* ************************* */
+/* *********kaart 2 ******** */
+/* ************************* */
+
+body main section:nth-of-type(2) {
+    padding: 4em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+body main section:nth-of-type(2) h2 img {
+    width: 10em;
+}
+
+body main section:nth-of-type(2) p {
+    font-family: var(--text-font);
+    font-size: 1em;
+
+    color: var(--kaart-background);
+
+    width: calc(var(--section-width) - 2em);
+    height: 6em;
+    margin: 2em 0 2em 0;
+
+    text-align: center;
+    padding: 2em 0;
+    position: relative;
+}
+
+body main section:nth-of-type(2) p::before {
+    content: "";
+    display: block;
+    background-color: var(--maan);
+    width: var(--section-width);
+    height: 6em;
+    position: absolute;
+    left: -1em;
+    top: 0em;
+    z-index: -1;
+}
+
+body main section:nth-of-type(2) a {
+    align-self: flex-start;
+    width: calc(var(--section-width) - 6em);
+    height: 3em;
+    padding: 1em 0;
+    font-family: var(--text-font);
+    font-size: .9em;
+    color: black;
+    text-decoration: none;
+
+    position: relative;
+    left: 4.5em;
+
+    margin: .5em 0;
+}
+
+body main section:nth-of-type(2) a:last-of-type {
+    padding: .3em 0;
+}
+
+body main section:nth-of-type(2) a::after {
+    content: "";
+    display: block;
+    background-color: var(--maan);
+    width: calc(var(--section-width) + 3em);
+    height: 100%;
+    position: absolute;
+    left: -5.7em;
+    top: 0;
+    z-index: -1;
+
+    transition: .5s;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+body main section:nth-of-type(2) a:hover {
+    color: var(--kaart-background);
+}
+
+body main section:nth-of-type(2) a:hover::after {
+    transform: scaleX(1);
+}
+
+body main section:nth-of-type(2) a:active::after {
+    background-color: black;
+}
+
+body main section:nth-of-type(2) a::before {
+    content: "";
+    display: block;
+    --size: 2.5em;
+    width: var(--size);
+    height: var(--size);
+
+    position: absolute;
+    left: -3em;
+    top: calc(50% - var(--size)/2);
+}
+
+body main section:nth-of-type(2) a:first-of-type:before {
+    background: url(../images/resume.png);
+    background-size: cover;
+}
+
+
+body main section:nth-of-type(2) a:nth-of-type(2):before {
+    background: url(../images/telefoon.png);
+    background-size: cover;
+}
+
+body main section:nth-of-type(2) a:nth-of-type(3):before {
+    background: url(../images/email.png);
+    background-size: cover;
+}
+
+body main section:nth-of-type(2) a:nth-of-type(4):before {
+    background: url(../images/location.png);
+    background-size: cover;
+}
+
+body main section:nth-of-type(2) a:hover::before {
+    filter: invert(80%) sepia(40%);
+}
