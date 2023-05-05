@@ -1,9 +1,10 @@
 
 var naam = document.querySelector("body main section:first-of-type h1");
+var firstfaceButton = document.querySelector("body main section:first-of-type > button");
 var cover = document.querySelector("body main section:first-of-type");
 var span = document.querySelector("body main > span");
 
-naam.addEventListener("click", naarkaart);
+firstfaceButton.addEventListener("click", naarkaart);
 
 function naarkaart() {
     cover.classList.add("naarkaart");

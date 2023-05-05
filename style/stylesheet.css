@@ -46,11 +46,12 @@ body main section {
     box-shadow: .5em .5em 2em var(--shadow);
     overflow: hidden;
     transform-origin: left left;
+
+    transition: .5s;
 }
 
 body main section:first-of-type {
     z-index: 2;
-
 }
 
 body main > span {
@@ -58,6 +59,7 @@ body main > span {
     width: 100%;
     height: 100%;
 
+    
     /* background-color: red; */
 }
 
@@ -139,12 +141,17 @@ body main section::after {
 }
 
 body main section:first-of-type button {
+    width: 100%;
+    height: 100%;
     cursor: pointer;
-    background: none;
     border: none;
+    position: absolute;
+    z-index: 1;
+
+    background-color: transparent;
 }
 
-body main section:first-of-type button h1 {
+body main section:first-of-type h1 {
     width: 100%;
     height: 1.2em;
     position: absolute;
@@ -154,14 +161,18 @@ body main section:first-of-type button h1 {
     font-size: 1.7em;
     font-weight: bold;
     text-align: center;
-    z-index: 100;
+    /* z-index: 100; */
     transition: .5s;
     color: black;
     /* background-color: red; */
 }
 
-body main section:first-of-type h1:hover {
-    transform: scale(1.05);
+body main section:first-of-type button:hover ~ h1{
+    transform: scale(1.2);
+}
+
+body main section:first-of-type:has(button:hover){
+    transform: rotate(10deg);
 }
 
 body main section:first-of-type h1:active {
